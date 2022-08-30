@@ -1,0 +1,53 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+
+<h2>ToDo List</h2>
+
+{% if message_list %}
+<table class="message_list">
+
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Task</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in message_list %}
+
+        <tr>
+            <td>{{ message.log_date | date:'M d, Y' }}</td>
+            <td>{{ message.log_date | time:'H:i' }}</td>
+            <td>
+                {{ message.message }}
+            </td>
+            <td>
+                <form action="{% url 'delete_object' id=message.id %}" method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-default btn-danger" type="submit" value="Delete" />
+                </form>
+
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No tasks have been logged. Use the <a href="{% url 'log' %}">New Task form</a>.</p>
+{% endif %}
+{% endblock %}
