@@ -32,3 +32,8 @@ def remove(request, id):
     obj = LogMessage.objects.get(id=id)
     obj.delete()
     return redirect("home")
+
+
+def about(request):
+    """Renders the about page."""
+    return render(request, "hello/about.html")

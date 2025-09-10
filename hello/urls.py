@@ -13,4 +13,5 @@ urlpatterns = [
     path("", home_list_view, name="home"),
     path("log/", views.log_message, name="log"),
     path("remove/<int:id>", views.remove, name='delete_object'),
+    path("about/", views.about, name="about"),
 ]
