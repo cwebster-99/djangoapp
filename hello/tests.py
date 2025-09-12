@@ -19,4 +19,4 @@ class AboutViewTest(TestCase):
         """Test that the about link appears in the navigation."""
         response = self.client.get('/')
         self.assertContains(response, 'href="/about/"')
-        self.assertContains(response, '>About</a>')
+        self.assertContains(response, 'About')

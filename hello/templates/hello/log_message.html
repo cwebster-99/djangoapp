@@ -3,9 +3,27 @@
 Add a New Task
 {% endblock %}
 {% block content %}
-<form method="POST" class="log-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="save btn btn-default">Log</button>
-</form>
+
+<div class="card">
+    <h2><span class="icon">➕</span> Add a New Task</h2>
+    
+    <form method="POST" class="log-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            <span class="icon">💾</span> Add Task
+        </button>
+    </form>
+</div>
+
+<div class="card">
+    <h3><span class="icon">💡</span> Tips for Better Task Management</h3>
+    <ul>
+        <li>Be specific and clear with your task descriptions</li>
+        <li>Include deadlines or time estimates when helpful</li>
+        <li>Break large tasks into smaller, manageable steps</li>
+        <li>Review and update your tasks regularly</li>
+    </ul>
+</div>
+
 {% endblock %}
